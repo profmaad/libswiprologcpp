@@ -518,7 +518,7 @@ public:
   Term(const double &);
   Term(void * const  &);
   Term(const Atom &);
-  Term(const Functor &);
+  explicit Term(const Functor &);
   Term(char const *);
   Term(string const &);
 
