@@ -1213,7 +1213,7 @@ inline Predicate::Predicate(const char* name, int arity, Module module) {
 
 inline string Term::to_external(void)
 {
-  unsigned size;
+  size_t size;
   char *str = PL_record_external(lsi, &size);
   string ext(str, size);
   PL_erase_external(str);
