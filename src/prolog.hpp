@@ -284,9 +284,9 @@ class StaticFunctor : public Functor, protected Init
 
 public:
   StaticFunctor(const char * name, int arity)
-    : init_name(name),
-      init_arity(arity),
-      Functor(defer)
+    : Functor(defer),
+      init_name(name),
+      init_arity(arity)
   { enqueue(&engine_queue);
   }
 
@@ -392,10 +392,10 @@ class StaticPredicate : public Predicate, protected Init
 
 public:
   StaticPredicate(const char* name, int arity, const char* module = "user")
-    : init_name(name),
+    : Predicate(defer),
+      init_name(name),
       init_arity(arity),
-      init_module(module),
-      Predicate(defer)
+      init_module(module)
   { enqueue(&engine_queue);
   }
 
@@ -1512,8 +1512,8 @@ void Term::init_from_seq(Functor f, ForwardIterator begin, ForwardIterator end)
 // class Query
 
 inline Query::Query(const char * name, int ar, Module context_module)
-  : pred(name, ar),
-    ctx(context_module)
+  : ctx(context_module),
+    pred(name, ar)
 {
   arity = ar;
   qid = (qid_t) -1;
@@ -1524,8 +1524,8 @@ inline Query::Query(const char * name, int ar, Module context_module)
 }
 
 inline Query::Query(Predicate p, Module context_module)
-  : pred(p),
-    ctx(context_module)
+  : ctx(context_module),
+    pred(p)
 {
   arity = pred.arity();
   qid = (qid_t) -1;
