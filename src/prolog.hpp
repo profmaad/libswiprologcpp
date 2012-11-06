@@ -13,7 +13,7 @@ using namespace std;
 #include <SWI-Prolog.h>
 
 class Atom;
-class Engine;
+struct Engine;
 class ForeignPredicate;
 class Frame;
 class Functor;
@@ -27,8 +27,8 @@ class StaticPredicate;
 class StaticQuery;
 class StaticTerm;
 class Term;
-class PrologException;
-class SafePrologException;
+struct PrologException;
+struct SafePrologException;
 class UnsafePrologException;
 
 extern string itoa(int, int=10);
