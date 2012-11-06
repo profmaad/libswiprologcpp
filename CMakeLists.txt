@@ -9,5 +9,8 @@ include_directories(${SWIPL_INCLUDE_DIRS})
 link_directories(${SWIPL_LIBRARY_DIRS})
 add_definitions(${SWIPL_DEFINITIONS})
 
-add_library(swiprologcpp src/prolog.cpp)
+add_library(swiprologcpp SHARED src/prolog.cpp)
 target_link_libraries(swiprologcpp ${SWIPL_LIBRARIES})
+
+install(TARGETS swiprologcpp LIBRARY DESTINATION lib)
+install(FILES src/prolog.hpp DESTINATION include/swiprolog-cpp)
