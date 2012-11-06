@@ -33,7 +33,6 @@ class UnsafePrologException;
 
 extern string itoa(int, int=10);
 extern void itoa(int, char*, int);
-extern Term copy_term(Term);
 
 // start or restart the prolog engine
 void prolog_init(int argc, char const * const * argv);
@@ -586,11 +585,6 @@ public:
     return TermType(PL_term_type(lsi));
   }
 
-  // copy the actual term
-  void copy() {
-    *this = copy_term(*this);
-  }
-
   // dangerous! The user must guarantee that there are no copies of the
   // Term object
   void assign(Term t1) {
@@ -620,7 +614,6 @@ public:
   template <Fopre8 fp> friend foreign_t fp_wrapper(term_t);
   template <Fopre9 fp> friend foreign_t fp_wrapper(term_t);
   friend bool atom_to_term(const char*, Term*, list<Term::Binding>*);
-  friend Term copy_term(Term);
   friend class UnsafePrologException;
 };
 

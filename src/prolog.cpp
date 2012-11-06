@@ -43,18 +43,6 @@ bool Prolog_impl::atom_to_term(const char* text, Term* t, list<Term::Binding>* b
   return true;
 }
 
-extern "C"
-unsigned long pl_copy_term(term_t in, term_t out);
-
-Term Prolog_impl::copy_term(Term t)
-{
-  term_t t2 = PL_new_term_ref();
-  if (!pl_copy_term(t.lsi, t2))
-    throw LogicError("copy_term(Term)", "failure calling pl_copy_term()");
-  return Term(t2);
-}
-
-
 void Prolog_impl::prolog_init(int argc, char const * const * argv)
 {
   the_engine.init(argc, argv, "prolog_init()");
