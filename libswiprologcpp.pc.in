@@ -1,0 +1,11 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libswiprologcpp
+Description: libswiprologcpp is an interface between Prolog and C++
+Version: 0.2.0
+Requires.private: swipl
+Libs: -L${libdir} -lswiprologcpp
+Cflags: -I${includedir}
