@@ -1,4 +1,4 @@
-#if !defined(_PROLOG_H_)
+#ifndef _PROLOG_H_
 #define _PROLOG_H_
 
 #include <string>
