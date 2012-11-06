@@ -207,10 +207,10 @@ public:
     m.handle = tmp;
   }
 
-  friend Term;
-  friend Predicate;
-  friend Query;
-  friend Engine;
+  friend class Term;
+  friend class Predicate;
+  friend class Query;
+  friend struct Engine;
 };
 
 
@@ -268,9 +268,9 @@ public:
     return string(name())+"/"+itoa(arity());
   }
 
-  friend Term;
-  friend Predicate;
-  friend Query;
+  friend class Term;
+  friend class Predicate;
+  friend class Query;
 };
 
 
@@ -292,7 +292,7 @@ public:
 
   ~StaticFunctor();
 
-  friend Term;
+  friend class Term;
 };
 
 
@@ -376,8 +376,8 @@ public:
     p.handle = tmp;
   }
 
-  friend Term;
-  friend Query;
+  friend class Term;
+  friend class Query;
 };
 
 
@@ -453,11 +453,11 @@ public:
     a.handle = tmp;
   }
 
-  friend Term;
-  friend RecordedTerm;
-  friend Query;
-  friend Module;
-  friend StaticFunctor;
+  friend class Term;
+  friend class RecordedTerm;
+  friend class Query;
+  friend class Module;
+  friend class StaticFunctor;
 };
 
 
@@ -602,13 +602,13 @@ public:
   inline static Term from_external(string ext);
 
   // friends
-  friend Query;
-  friend Atom;
-  friend Functor;
-  friend StaticFunctor;
-  friend StaticQuery;
-  friend Predicate;
-  friend RecordedTerm;
+  friend class Query;
+  friend class Atom;
+  friend class Functor;
+  friend class StaticFunctor;
+  friend class StaticQuery;
+  friend class Predicate;
+  friend class RecordedTerm;
   template <Fopre0 fp> friend foreign_t fp_wrapper(term_t);
   template <Fopre1 fp> friend foreign_t fp_wrapper(term_t);
   template <Fopre2 fp> friend foreign_t fp_wrapper(term_t);
@@ -621,7 +621,7 @@ public:
   template <Fopre9 fp> friend foreign_t fp_wrapper(term_t);
   friend bool atom_to_term(const char*, Term*, list<Term::Binding>*);
   friend Term copy_term(Term);
-  friend UnsafePrologException;
+  friend class UnsafePrologException;
 };
 
 struct Term::Binding
@@ -804,7 +804,7 @@ class StaticQuery : public Query
     void freeze();
   };
   Init_Engine ie;
-  friend Init_Engine;
+  friend struct Init_Engine;
 
   const char* init_pred;
   const char* init_text;
