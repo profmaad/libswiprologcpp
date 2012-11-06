@@ -1401,22 +1401,22 @@ inline Term::Term(string const & text) {
 
 inline Term::Term(const long& val) {
   lsi = PL_new_term_ref();
-  PL_put_integer(lsi, val);
+  (void)PL_put_integer(lsi, val);
 }
 
 inline Term::Term(const int& val) {
   lsi = PL_new_term_ref();
-  PL_put_integer(lsi, val);
+  (void)PL_put_integer(lsi, val);
 }
 
 inline Term::Term(const double& val) {
   lsi = PL_new_term_ref();
-  PL_put_float(lsi, val);
+  (void)PL_put_float(lsi, val);
 }
 
 inline Term::Term(void * const & ptr) {
   lsi = PL_new_term_ref();
-  PL_put_pointer(lsi, ptr);
+  (void)PL_put_pointer(lsi, ptr);
 }
 
 inline Term::Term(const Atom& a) {
@@ -1426,7 +1426,7 @@ inline Term::Term(const Atom& a) {
 
 inline Term::Term(const Functor& f) {
   lsi = PL_new_term_ref();
-  PL_put_functor(lsi, f.handle);
+  (void)PL_put_functor(lsi, f.handle);
 }
 
 
@@ -1446,7 +1446,7 @@ inline Term::Term(InputIterator begin, InputIterator end)
     ++begin;
   }
 
-  PL_unify_nil(tailref);
+  (void)PL_unify_nil(tailref);
 }
 
 inline Term Term::operator [] (int index) const
@@ -1502,7 +1502,7 @@ void Term::init_from_seq(Functor f, ForwardIterator begin, ForwardIterator end)
   }
 
   lsi = PL_new_term_ref();
-  PL_cons_functor_v(lsi, f.handle, args);
+  (void)PL_cons_functor_v(lsi, f.handle, args);
 }
 
 
