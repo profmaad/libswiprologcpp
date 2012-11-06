@@ -1,0 +1,26 @@
+pkgname=libswiprologcpp-git
+pkgver=20121106
+pkgrel=1
+pkgdesc="libswiprologcpp is an interface between Prolog and C++"
+arch=('i686' 'x86_64')
+license=('GPLv2')
+makedepends=('git' 'cmake>=2.8')
+depends=('swi-prolog')
+url="https://github.com/profmaad/libswiprologcpp.git"
+options=(!libtool)
+
+build() {
+cd $srcdir
+msg "Pulling source repo from Git..."
+git clone $url ./$pkgname || return 1
+
+mkdir build
+cd build
+
+msg "Building..."
+cmake ../$pkgname \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_INSTALL_PREFIX=/usr
+make
+make DESTDIR=$pkgdir install
+}
