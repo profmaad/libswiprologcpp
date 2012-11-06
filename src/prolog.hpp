@@ -551,6 +551,7 @@ public:
 
   Term& operator = (const Term& t) {
     lsi = t.lsi;
+    return *this;
   }
 
   void swap(Term& t) {
