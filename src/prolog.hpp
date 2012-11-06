@@ -1658,7 +1658,7 @@ inline void Query::close() {
     throw LogicError("Query::close()", "query is not running");
 }
 
-Term Query::operator[] (int index)
+inline Term Query::operator[] (int index)
 {
 	if(index >= 0 && index < arity)
 	{
