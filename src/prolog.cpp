@@ -22,21 +22,10 @@ Engine Prolog_impl::the_engine;
 
 // Global functions--------------------------------------------------------
 
-// part of SWI-Prolog, but not exportet by header file
-// /usr/local/src/swiprolog-4.0.9/src/pl-funcs.h
-extern "C"
-unsigned long pl_atom_to_term(term_t in_atom,
-                              term_t out_term,
-                              term_t out_bindings);
-
-bool Prolog_impl::atom_to_term(const char* text, Term* t, list<Term::Binding>* b)
+bool Prolog_impl::atom_to_term(const char* text, Term* t, list<Term::Binding>* b) // DO NO USE THIS!!!
 {
-  Term in_atom = Atom(text);
   Term out_term;
   Term out_bindings;
-
-  if (!pl_atom_to_term(in_atom.lsi, out_term.lsi, out_bindings.lsi))
-    return false;
 
   if (t) *t = out_term;
   if (b) *b = out_bindings;
