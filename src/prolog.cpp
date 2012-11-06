@@ -1,5 +1,5 @@
 #include <list>
-#include <string.h>
+#include <string>
 
 #define logvar(x) \
 cout << __FILE__ << ":" << __LINE__ << " " << #x << " = " << x << endl;
@@ -11,6 +11,7 @@ cout << __FILE__ << ":" << __LINE__ << " " << x << endl;
 #include "prolog.hpp"
 
 using namespace Prolog_impl;
+using namespace std;
 
 // Global Data-------------------------------------------------------------
 

@@ -3,10 +3,12 @@
 
 #include <string>
 #include <list>
-#include <ostream.h>
+#include <iostream>
 #include <iterator>
 
 namespace Prolog_impl {
+
+using namespace std;
 
 #include <SWI-Prolog.h>
 
