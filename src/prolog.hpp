@@ -1358,7 +1358,7 @@ Term::operator list<T>() const
 }
 
 template <>
-extern Term::operator list<char*>() const;
+Term::operator list<char*>() const;
 
 
 template <typename T>
