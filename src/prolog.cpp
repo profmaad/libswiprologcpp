@@ -99,7 +99,7 @@ void Prolog_impl::itoa(int n, char *str, int b)
     }
 }
 
-string Prolog_impl::itoa(int x, int b=10)
+string Prolog_impl::itoa(int x, int b)
 {
   char P[40];
   itoa(x, P, b);
