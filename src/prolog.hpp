@@ -783,6 +783,8 @@ public:
   Query& operator () (Term);
   Query& operator () ();
 
+  Term operator[] (int index);
+
   bool next();
   void cut();
   void close();
@@ -1663,6 +1665,18 @@ inline void Query::close() {
     throw LogicError("Query::close()", "query is not running");
 }
 
+Term Query::operator[] (int index)
+{
+	if(index >= 0 && index < arity)
+	{
+		return Term(predargs+index);
+	}
+	else
+	{
+		throw LogicError("Query::operator[]", "invalid index");
+		return Term();
+	}
+}
 
 // class StaticQuery
 
